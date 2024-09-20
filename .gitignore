@@ -8,3 +8,4 @@ __pycache__/
 
 envVar.py
 screenshot.png
+.DS_Store
