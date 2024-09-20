@@ -8,6 +8,7 @@ Ce projet est un bot Discord utilisant `discord.py` pour la gestion des commande
 
 - Commande `!test` : Vérifie si le bot fonctionne correctement.
 - Commande `!getSchedule` : Exécute une tâche avec Selenium et envoie une capture d'écran.
+- Loop Task : Permet tout les semaine d'afficher le planning
 
 ## Prérequis
 
