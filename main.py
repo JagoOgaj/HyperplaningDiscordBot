@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from discord import Intents
 from typing import Optional
-from driver import Driver
+from driver.driver import Driver
 import constants
 
 # Configuration du bot
