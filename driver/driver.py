@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from typing import ClassVar
 from selenium.webdriver.common.keys import Keys
 import time as t
-from singleton import singleton
+from utils.tools import singleton
 
 # Types
 type Driver = webdriver.Firefox

@@ -7,3 +7,4 @@ __pycache__/
 *.pyd
 
 constants.py
+screenshot.png

@@ -25,7 +25,7 @@ Assurez-vous d'avoir les éléments suivants installés sur votre machine :
    cd repository
 
 
-2. **Créez un environnement virtuel (optionnel mais recommandé) ::**
+2. **Créez un environnement virtuel (optionnel mais recommandé) :**
   ```bash
    python -m venv venv
    source venv/bin/activate  # Sur Windows utilisez `venv\Scripts\activate`
