@@ -4,7 +4,7 @@ from DriverService.driverService import DriverObj
 import envVar
 from utils.service import generate_and_send_image
 from error.exceptionsCustom import ImageNotFoundError
-from datetime import datetime
+from datetime import datetime, timedelta
 import constants.constantsDate as D
 
 
@@ -20,11 +20,11 @@ class AlarmHyperplaningCog(commands.Cog):
     def cog_unload(self):
         self.schedule_image_loop.cancel()
 
-    @tasks.loop(hours=7*24)
+    @tasks.loop(hours=24)
     async def schedule_image_loop(self):
         channel = self._bot.get_channel(self._channelId)
         current_date = datetime.now().date()
-        if (channel is not None) and (current_date not in D.excluded_dates):
+        if (channel is not None) and (current_date not in D.excluded_dates) and (datetime.now().weekday() == 0):
             try:
                 await generate_and_send_image(self._driver, channel)
             except ImageNotFoundError as e:
