@@ -12,7 +12,7 @@ Ce projet est un bot Discord utilisant `discord.py` pour la gestion des commande
 ## Prérequis
 
 Assurez-vous d'avoir les éléments suivants installés sur votre machine :
-- Python 3.8 ou supérieur
+- Python 3.12
 - Un environnement virtuel Python (optionnel mais recommandé)
 - Le navigateur Firefox et le geckodriver correspondant
 
@@ -27,19 +27,19 @@ Assurez-vous d'avoir les éléments suivants installés sur votre machine :
 
 
 2. **Créez un environnement virtuel (optionnel mais recommandé) :**
-  ```bash
+   ```bash
    python -m venv venv
    source venv/bin/activate  # Sur Windows utilisez `venv\Scripts\activate`
    ```
 
 3. **Installez les dépendances :**
-     ```bash
+   ```bash
    pip install -r requirements.txt
    ```
     
 4. **Configurez les variables d’environnement :**
 Assurez-vous de définir les variables d’environnement nécessaires, en créant à la racine le fichier "envVar.py" contenant 7 variable
-  ```python
+   ```python
    EXECUTABLE_PATH: str = 
    URL_HYPERPLANNING: str = 
    ELEMENT_TO_FOCUS: str =
@@ -55,40 +55,27 @@ Une fois l'instalation et la configuration terminé pour lancer le bot avec un `
 
 ## Architecture 
 ```bash
-├── DriverService
-│   ├── __pycache__
-│   │   ├── driver.cpython-312.pyc
-│   │   └── driverService.cpython-312.pyc
-│   └── driverService.py
-├── bot
-│   ├── __pycache__
-│   │   └── botDiscord.cpython-312.pyc
-│   └── botDiscord.py
-├── cogs
-│   ├── __pycache__
-│   │   ├── alarmCog.cpython-312.pyc
-│   │   ├── cogsCommands.cpython-312.pyc
-│   │   └── scheduleCog.cpython-312.pyc
-│   ├── alarmCog.py
-│   └── scheduleCog.py
-├── constants
-│   ├── __pycache__
-│   │   └── constantsDate.cpython-312.pyc
-│   └── constantsDate.py
-├── envVar.py
-├── error
-│   ├── __pycache__
-│   │   └── exceptionsCustom.cpython-312.pyc
-│   └── exceptionsCustom.py
-├── exec
-│   └── geckodriver
-├── main.py
-├── requirements.txt 
-├── README.md
-└── utils
-    ├── __pycache__
-    │   ├── service.cpython-312.pyc
-    │   └── tools.cpython-312.pyc
-    ├── service.py
-    └── tools.py
+├── DriverService                    # Contient la logique pour gérer le service du driver
+│   └── driverService.py             # Fichier principal pour le service de driver
+├── bot                              # Module pour la gestion du bot Discord
+│   └── botDiscord.py                # Logique principale pour interagir avec Discord
+├── cogs                             # Contient les cogs pour le bot Discord
+│   ├── alarmCog.py                  # Cog pour gérer les alarmes
+│   └── scheduleCog.py               # Cog pour gérer les horaires
+├── constants                        # Contient des constantes utilisées dans le projet
+│   └── constantsDate.py             # Fichier pour les constantes liées aux dates
+├── envVar.py                        # Fichier contenant les variables d'environnement
+├── error                            # Module pour la gestion des erreurs personnalisées
+│   └── exceptionsCustom.py          # Définitions d'exceptions personnalisées
+├── exec                             # Contient des exécutables ou des binaires nécessaires
+│   └── geckodriver                  # Driver pour contrôler le navigateur via Selenium
+├── main.py                          # Point d'entrée principal de l'application
+├── requirements.txt                 # Liste des dépendances du projet
+├── README.md                        # Documentation du projet
+└── utils                            # Contient des utilitaires et des fonctions d'aide
+    ├── service.py                   # Fonctions utilitaires pour divers services
+    └── tools.py                     # Outils divers pour le projet
+```
+## Licence
 
+Ce projet est un projet open source réalisé par un Samy OKI, élève de 3ème informatique dans le cadre de son BUT en Informatique.
