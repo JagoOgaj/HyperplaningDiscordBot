@@ -4,6 +4,7 @@ from DriverService.driverService import DriverObj
 import envVar
 from utils.service import generate_and_send_image
 from error.exceptionsCustom import ImageNotFoundError
+from datetime import datetime, timedelta
 
 
 class HyperplaningCog(commands.Cog):
@@ -21,7 +22,13 @@ class HyperplaningCog(commands.Cog):
     async def slashCommand(self, ctx: commands.Context):
         try:
             channel = ctx.channel
-            await generate_and_send_image(self._driver, channel)
+            today = datetime.now()
+            days_since_monday = today.weekday()
+            date_debut = today - timedelta(days=days_since_monday)
+            date_fin = date_debut + timedelta(days=4)
+            dates: list = [date_debut.strftime(
+                "%d %B %Y"), date_fin.strftime("%d %B %Y")]
+            await generate_and_send_image(self._driver, channel, dates)
         except ImageNotFoundError as e:
             embed = discord.Embed(
                 title="Erreur",

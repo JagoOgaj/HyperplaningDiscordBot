@@ -28,7 +28,7 @@ class AlarmHyperplaningCog(commands.Cog):
                 date_debut = today
                 date_fin = today + timedelta(days=5)
                 dates: list = [date_debut.strftime(
-                    "%d %B"), date_fin.strftime("%d %B")]
+                    "%d %B" "%Y"), date_fin.strftime("%d %B" "%Y")]
                 await generate_and_send_image(self._driver, channel, dates)
             except ImageNotFoundError as e:
                 embed = discord.Embed(
