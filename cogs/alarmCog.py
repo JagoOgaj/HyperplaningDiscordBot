@@ -5,7 +5,6 @@ import envVar
 from utils.service import generate_and_send_image
 from error.exceptionsCustom import ImageNotFoundError
 from datetime import datetime, timedelta
-import constants.constantsDate as D
 
 
 class AlarmHyperplaningCog(commands.Cog):
@@ -23,10 +22,14 @@ class AlarmHyperplaningCog(commands.Cog):
     @tasks.loop(hours=24)
     async def schedule_image_loop(self):
         channel = self._bot.get_channel(self._channelId)
-        current_date = datetime.now().date()
-        if (channel is not None) and (current_date not in D.excluded_dates) and (datetime.now().weekday() == 0):
+        if (channel is not None) and (datetime.now().weekday() == 0):
             try:
-                await generate_and_send_image(self._driver, channel)
+                today = datetime.now()
+                date_debut = today
+                date_fin = today + timedelta(days=5)
+                dates: list = [date_debut.strftime(
+                    "%d %B"), date_fin.strftime("%d %B")]
+                await generate_and_send_image(self._driver, channel, dates)
             except ImageNotFoundError as e:
                 embed = discord.Embed(
                     title="Erreur",
