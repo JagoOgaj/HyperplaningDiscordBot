@@ -77,6 +77,3 @@ Une fois l'instalation et la configuration terminé pour lancer le bot avec un `
     ├── service.py                   # Fonctions utilitaires pour divers services
     └── tools.py                     # Outils divers pour le projet
 ```
-## Licence
-
-Ce projet est un projet open source réalisé par un Samy OKI, élève de 3ème informatique dans le cadre de son BUT en Informatique.
