@@ -67,7 +67,18 @@ class DriverObj[T]:
         element.send_keys(self._search)
         element.send_keys(Keys.RETURN)
 
+        if envVar.ELEMENT_COOKIE_BANNER:
+            elements = self._driver.find_elements(By.CLASS_NAME, envVar.ELEMENT_COOKIE_BANNER) 
+            if len(elements) != 0:
+                self._driver.execute_script(f"document.getElementsByClassName('{envVar.ELEMENT_COOKIE_BANNER}')[0].remove();")
+
         t.sleep(self._timeoutForTakePicture)
+
+        if envVar.ELEMENT_TO_SCREENSHOT:
+            espace_edt = self._driver.find_element(By.CLASS_NAME, envVar.ELEMENT_TO_SCREENSHOT)
+            espace_edt.screenshot(self._pathToSavePictureOfSchedule)
+        else:
+            self._driver.save_screenshot(self._pathToSavePictureOfSchedule)
 
         self._driver.save_screenshot(self._pathToSavePictureOfSchedule)
 
