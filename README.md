@@ -48,6 +48,9 @@ Assurez-vous de définir les variables d’environnement nécessaires, en créan
    BOT_TOKEN: str = 
    OUTPUT: str = 
    CHANNEL_ID: int = 
+   ELEMENT_COOKIE_BANNER: any =
+   ELEMENT_TO_SCREENSHOT: any =
+   FIREFOX_PATH: any =
    ```
 
 ## Lancer le programe
@@ -77,3 +80,5 @@ Une fois l'instalation et la configuration terminé pour lancer le bot avec un `
     ├── service.py                   # Fonctions utilitaires pour divers services
     └── tools.py                     # Outils divers pour le projet
 ```
+
+
