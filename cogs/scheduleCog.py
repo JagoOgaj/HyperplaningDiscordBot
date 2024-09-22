@@ -10,6 +10,7 @@ from datetime import datetime, timedelta
 class HyperplaningCog(commands.Cog):
     def __init__(self, bot: commands.Bot) -> None:
         self._bot: commands.Bot = bot
+        self.getting_schedule = False
         self._driver: DriverObj[str] = DriverObj(
             envVar.EXECUTABLE_PATH, envVar.URL_HYPERPLANNING, envVar.ELEMENT_TO_FOCUS, envVar.INPUT
         )
@@ -18,8 +19,11 @@ class HyperplaningCog(commands.Cog):
     async def test_command(self, ctx: commands.Context) -> None:
         return await ctx.send("test")
 
-    @commands.command(name="getSchedule")
+    @commands.command(name="getSchedule", aliases=["edt"])
     async def slashCommand(self, ctx: commands.Context):
+        if (self.getting_schedule):
+            return
+        self.getting_schedule = True
         try:
             channel = ctx.channel
             today = datetime.now()
