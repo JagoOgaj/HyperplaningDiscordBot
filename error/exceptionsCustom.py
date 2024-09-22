@@ -13,4 +13,4 @@ class ImageNotFoundError(ScheduleImageError):
 class DriverExecutionError(ScheduleImageError):
     """Exception levée lorsqu'une erreur se produit lors de l'exécution du driver."""
     def __init__(self, driver_error: str):
-        super().__init__(f"Une erreur s'est produite lors de l'exécution du driver : {driver_error}")
+        super().__init__(driver_error)
