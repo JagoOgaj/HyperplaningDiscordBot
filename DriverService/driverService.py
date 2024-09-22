@@ -40,6 +40,11 @@ class DriverObj[T]:
     def __setDriver(self) -> DriverType:
         options: Options = Options()
         options.add_argument("--headless")
+        options.add_argument("--width=1920")
+        options.add_argument("--height=1080")
+
+        if envVar.FIREFOX_PATH:
+            options.binary_location = envVar.FIREFOX_PATH
 
         self._driver = webdriver.Firefox(service=self._service, options=options)
 
