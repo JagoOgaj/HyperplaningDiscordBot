@@ -8,7 +8,7 @@ from error.exceptionsCustom import ImageNotFoundError, DriverExecutionError
 async def generate_and_send_image(driver: DriverObj, channel: discord.TextChannel, dates: list):
     try:
         await asyncio.to_thread(driver.runDriver)
-        await channel.send(f"@here Le planning du {dates[0]} au {dates[1]}")
+        await channel.send(f"Le planning du {dates[0]} au {dates[1]}")
         with open(envVar.OUTPUT, 'rb') as f:
             picture = discord.File(f)
             await channel.send(file=picture)
